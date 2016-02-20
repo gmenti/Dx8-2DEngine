@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.OCX"
 Begin VB.Form frmMain 
    BackColor       =   &H00E0E0E0&
@@ -160,6 +160,11 @@ errorhandler:
     HandleError "Form_KeyDown", "frmMain", Err.Number, Err.Description, Erl
     Err.Clear
 End Sub
+
+Private Sub Form_Load()
+    SelTextbox = 1
+End Sub
+
 Private Sub Form_Resize()
 
    On Error GoTo errorhandler

@@ -2170,6 +2170,7 @@ Public Function HandleRegisterPanel_MouseUp(X As Long, Y As Long)
                 PlaySound CLICK_SOUND, -1, -1
                 RVoltarButtonState = 0
                 MenuStage = 1
+                SelTextbox = 1
                 MENU_ERRO_MSG = vbNullString
             Else
                 RVoltarButtonState = 0
@@ -2343,7 +2344,7 @@ End Sub
 
 Public Sub AbrirSite()
     Dim r As Long
-   r = ShellExecute(0, "open", GAME_WEBSITE, 0, 0, 1)
+    r = ShellExecute(0, "open", GAME_WEBSITE, 0, 0, 1)
 End Sub
 
 Public Sub HandleMenuKeypress(KeyAscii As Integer)
