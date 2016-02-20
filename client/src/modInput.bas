@@ -2365,7 +2365,9 @@ Public Sub HandleMenuKeypress(KeyAscii As Integer)
     End If
     
     If KeyAscii = vbKeyTab And TabTick > GetTickCount Then Exit Sub
+    
     If MenuStage = 1 Then
+    
         If KeyAscii = vbKeyTab Then
             If SelTextbox = 1 Then
                 SelTextbox = 2
@@ -2399,23 +2401,23 @@ Public Sub HandleMenuKeypress(KeyAscii As Integer)
             End If
         End If
     ElseIf MenuStage = 2 Then
-        If KeyAscii = vbKeyTab Then
+        If KeyAscii = vbKeyTab Or KeyAscii = vbKeyReturn Then
             If SelTextbox = 1 Then
+                SelTextbox = 5
+            ElseIf SelTextbox = 5 Then
                 SelTextbox = 2
             ElseIf SelTextbox = 2 Then
                 SelTextbox = 3
             ElseIf SelTextbox = 3 Then
-                SelTextbox = 1
+                SelTextbox = 4
+            ElseIf SelTextbox = 4 Then
+                If KeyAscii = vbKeyReturn Then
+                    MenuState MENU_STATE_NEWACCOUNT
+                Else
+                    SelTextbox = 1
+                End If
             End If
             TabTick = GetTickCount + 200
-        ElseIf KeyAscii = vbKeyReturn Then
-            If SelTextbox = 1 Then
-                SelTextbox = 2
-            ElseIf SelTextbox = 2 Then
-                SelTextbox = 3
-            ElseIf SelTextbox = 3 Then
-                MenuState MENU_STATE_NEWACCOUNT
-            End If
         Else
             If SelTextbox = 1 Then
                 If KeyAscii = vbKeyBack Then
