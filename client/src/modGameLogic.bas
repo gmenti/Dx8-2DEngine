@@ -222,7 +222,7 @@ Dim fogtmr As Long, bartmr As Long, Tab1 As Long, Tab2 As Long
         DoEvents
         ' Lock fps
         If Not FPS_Lock Then
-            Do While GetTickCount < tick + 30
+            Do While GetTickCount < tick + 10
                 DoEvents
                 Sleep 1
             Loop
@@ -397,7 +397,7 @@ Dim aux As Long
 
         ' Lock fps
         If Not FPS_Lock Then
-            Do While GetTickCount < tick + 30
+            Do While GetTickCount < tick + 10
                 DoEvents
                 Sleep 1
             Loop
