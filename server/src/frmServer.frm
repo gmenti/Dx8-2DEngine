@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "mswinsck.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "mscomctl.OCX"
 Begin VB.Form frmServer 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Server"
@@ -55,125 +55,6 @@ Begin VB.Form frmServer
       Top             =   240
       Visible         =   0   'False
       Width           =   975
-   End
-   Begin VB.Frame fraConsole 
-      Caption         =   "Console"
-      Height          =   6735
-      Left            =   2760
-      TabIndex        =   2
-      Top             =   960
-      Width           =   9855
-      Begin VB.TextBox txtText 
-         Height          =   2055
-         Left            =   240
-         MultiLine       =   -1  'True
-         ScrollBars      =   2  'Vertical
-         TabIndex        =   4
-         Top             =   3840
-         Width           =   9255
-      End
-      Begin VB.TextBox txtChat 
-         Height          =   375
-         Left            =   240
-         TabIndex        =   3
-         Top             =   6000
-         Width           =   8655
-      End
-      Begin MSComctlLib.ListView lvwInfo 
-         Height          =   2415
-         Left            =   240
-         TabIndex        =   44
-         Top             =   840
-         Width           =   9255
-         _ExtentX        =   16325
-         _ExtentY        =   4260
-         View            =   3
-         Arrange         =   1
-         LabelWrap       =   -1  'True
-         HideSelection   =   0   'False
-         AllowReorder    =   -1  'True
-         FullRowSelect   =   -1  'True
-         GridLines       =   -1  'True
-         _Version        =   393217
-         ForeColor       =   -2147483640
-         BackColor       =   -2147483643
-         BorderStyle     =   1
-         Appearance      =   1
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Verdana"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         NumItems        =   4
-         BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-            Text            =   "Index"
-            Object.Width           =   1147
-         EndProperty
-         BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-            SubItemIndex    =   1
-            Text            =   "IP Address"
-            Object.Width           =   3175
-         EndProperty
-         BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-            SubItemIndex    =   2
-            Text            =   "Account"
-            Object.Width           =   3175
-         EndProperty
-         BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-            SubItemIndex    =   3
-            Text            =   "Character"
-            Object.Width           =   2999
-         EndProperty
-      End
-      Begin VB.Label lblTitle 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
-         Caption         =   "Jogadores"
-         BeginProperty Font 
-            Name            =   "Georgia"
-            Size            =   15.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   -1  'True
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00000000&
-         Height          =   375
-         Index           =   1
-         Left            =   240
-         TabIndex        =   45
-         Top             =   360
-         Width           =   1935
-      End
-      Begin VB.Label lblCPS 
-         BackColor       =   &H80000000&
-         BackStyle       =   0  'Transparent
-         Caption         =   "CPS: 0"
-         ForeColor       =   &H00000000&
-         Height          =   255
-         Left            =   1080
-         TabIndex        =   6
-         Top             =   3480
-         Width           =   1815
-      End
-      Begin VB.Label lblCpsLock 
-         Alignment       =   2  'Center
-         AutoSize        =   -1  'True
-         BackColor       =   &H80000000&
-         BackStyle       =   0  'Transparent
-         Caption         =   "[Unlock]"
-         ForeColor       =   &H00FF0000&
-         Height          =   195
-         Left            =   240
-         TabIndex        =   5
-         Top             =   3480
-         Width           =   720
-      End
    End
    Begin VB.Frame fraControlPanel 
       Caption         =   "Painel de Controle"
@@ -325,11 +206,19 @@ Begin VB.Form frmServer
          BackColor       =   &H80000004&
          Caption         =   "Recarregar"
          ForeColor       =   &H00000000&
-         Height          =   3135
+         Height          =   3495
          Left            =   240
          TabIndex        =   24
          Top             =   360
          Width           =   1455
+         Begin VB.CommandButton cmdLoadOptions 
+            Caption         =   "Options"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   70
+            Top             =   3120
+            Width           =   1155
+         End
          Begin VB.CommandButton cmdReloadClasses 
             Caption         =   "Classes"
             Height          =   255
@@ -680,6 +569,125 @@ Begin VB.Form frmServer
          End
       End
    End
+   Begin VB.Frame fraConsole 
+      Caption         =   "Console"
+      Height          =   6735
+      Left            =   2760
+      TabIndex        =   2
+      Top             =   960
+      Width           =   9855
+      Begin VB.TextBox txtText 
+         Height          =   2055
+         Left            =   240
+         MultiLine       =   -1  'True
+         ScrollBars      =   2  'Vertical
+         TabIndex        =   4
+         Top             =   3840
+         Width           =   9255
+      End
+      Begin VB.TextBox txtChat 
+         Height          =   375
+         Left            =   240
+         TabIndex        =   3
+         Top             =   6000
+         Width           =   8655
+      End
+      Begin MSComctlLib.ListView lvwInfo 
+         Height          =   2415
+         Left            =   240
+         TabIndex        =   44
+         Top             =   840
+         Width           =   9255
+         _ExtentX        =   16325
+         _ExtentY        =   4260
+         View            =   3
+         Arrange         =   1
+         LabelWrap       =   -1  'True
+         HideSelection   =   0   'False
+         AllowReorder    =   -1  'True
+         FullRowSelect   =   -1  'True
+         GridLines       =   -1  'True
+         _Version        =   393217
+         ForeColor       =   -2147483640
+         BackColor       =   -2147483643
+         BorderStyle     =   1
+         Appearance      =   1
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Verdana"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         NumItems        =   4
+         BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+            Text            =   "Index"
+            Object.Width           =   1147
+         EndProperty
+         BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+            SubItemIndex    =   1
+            Text            =   "IP Address"
+            Object.Width           =   3175
+         EndProperty
+         BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+            SubItemIndex    =   2
+            Text            =   "Account"
+            Object.Width           =   3175
+         EndProperty
+         BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+            SubItemIndex    =   3
+            Text            =   "Character"
+            Object.Width           =   2999
+         EndProperty
+      End
+      Begin VB.Label lblTitle 
+         BackColor       =   &H00000000&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Jogadores"
+         BeginProperty Font 
+            Name            =   "Georgia"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   -1  'True
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00000000&
+         Height          =   375
+         Index           =   1
+         Left            =   240
+         TabIndex        =   45
+         Top             =   360
+         Width           =   1935
+      End
+      Begin VB.Label lblCPS 
+         BackColor       =   &H80000000&
+         BackStyle       =   0  'Transparent
+         Caption         =   "CPS: 0"
+         ForeColor       =   &H00000000&
+         Height          =   255
+         Left            =   1080
+         TabIndex        =   6
+         Top             =   3480
+         Width           =   1815
+      End
+      Begin VB.Label lblCpsLock 
+         Alignment       =   2  'Center
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000000&
+         BackStyle       =   0  'Transparent
+         Caption         =   "[Unlock]"
+         ForeColor       =   &H00FF0000&
+         Height          =   195
+         Left            =   240
+         TabIndex        =   5
+         Top             =   3480
+         Width           =   720
+      End
+   End
    Begin VB.Label lblServerMenuOpt 
       Alignment       =   2  'Center
       BackColor       =   &H00000000&
@@ -852,32 +860,11 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub chkDisableRestart_Click()
-
-
-   On Error GoTo errorhandler
-    If chkDisableRestart.value = 1 Then
-        Options.DisableRemoteRestart = 1
-        SaveOptions
-    Else
-        Options.DisableRemoteRestart = 0
-        SaveOptions
-    End If
-    
-
-
-   On Error GoTo 0
-   Exit Sub
-errorhandler:
-    HandleError "chkDisableRestart_Click", "frmServer", Err.Number, Err.Description, Erl
-    Err.Clear
-End Sub
-
 Private Sub chkStaffOnly_Click()
 Dim i As Long
 
    On Error GoTo errorhandler
-    If chkStaffOnly.value = 1 Then
+    If chkStaffOnly.Value = 1 Then
         Options.StaffOnly = 1
         SaveOptions
         For i = 1 To MAX_PLAYERS
@@ -1016,6 +1003,11 @@ errorhandler:
 End Sub
 
 
+Private Sub cmdLoadOptions_Click()
+    LoadOptions
+    Call TextAdd("All options reloaded.")
+End Sub
+
 Private Sub cmdReserveMaps_Click()
 Dim map1 As Long, map2 As Long, i As Long
 
@@ -1081,7 +1073,6 @@ Private Sub cmdSaveDataFolder_Click()
 
    On Error GoTo errorhandler
    
-   Options.UpdateURL = txtUpdateUrl.Text
    SaveOptions
     
     If Len(Trim$(txtDataFolder.Text)) > 0 And Trim$(LCase(txtDataFolder.Text)) <> "default" Then
@@ -1254,7 +1245,6 @@ Private Sub lblServerMenuOpt_Click(Index As Integer)
             fraControlPanel.Visible = True
             txtNews.Text = News
             txtCredits.Text = Credits
-            txtUpdateUrl.Text = Options.UpdateURL
             txtDataFolder.Text = Options.DataFolder
         Case 4
             DestroyServer
@@ -1428,7 +1418,7 @@ Private Sub chkServerLog_Click()
 
    On Error GoTo errorhandler
 
-    If Not chkServerLog.value Then
+    If Not chkServerLog.Value Then
         ServerLog = True
     End If
 

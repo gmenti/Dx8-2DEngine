@@ -4465,7 +4465,6 @@ Dim buffer As clsBuffer
         IsGold = False
     End If
     ServerDir = buffer.ReadString
-    UpdateURL = buffer.ReadString
     If buffer.ReadLong <> App.Major Or buffer.ReadLong <> App.Minor Or buffer.ReadLong <> App.Revision Then
         MsgBox "Your client or the game server is outdated! Be sure you are launching the client and connecting to a server of the same version!"
         End
@@ -4742,7 +4741,6 @@ Dim buffer As clsBuffer, i As Long, X As Long, Name As String
     frmAdmin.txtGameName.Text = buffer.ReadString
     frmAdmin.txtGameWebsite.Text = buffer.ReadString
     frmAdmin.txtDataFolder.Text = buffer.ReadString
-    frmAdmin.txtUpdateURL.Text = buffer.ReadString
     frmAdmin.lblAccounts.Caption = "Accounts: " & CStr(buffer.ReadLong)
     frmAdmin.lblPlayersOnline.Caption = "Online Players: " & CStr(buffer.ReadLong)
     frmAdmin.lblUpTime.Caption = "Uptime: " & uptimeToDHMS(buffer.ReadLong / 1000)

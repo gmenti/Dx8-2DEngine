@@ -27,9 +27,11 @@ Public Sub InitServer()
     Dim time2 As Long
 
    On Error GoTo errorhandler
-
+   
     Call InitMessages
     time1 = GetTickCount
+    
+    Call ConnectToDatabase
 
     ' Initialize the random-number generator
     Randomize ', seed
@@ -55,26 +57,9 @@ Public Sub InitServer()
     
     SetLoadingProgress "Loading Options", 2, 1
     
-    ' load options, set if they dont exist
-    If FileExist(App.path & "\options.ini", True) = False And FileExist(App.path & "\data\options.ini", True) = False Then
-        Options.Game_Name = "Eclipse Origins Silver Edition"
-        Options.Port = 7001
-        Options.MOTD = "Welcome to Eclipse Origins."
-        Options.Website = "http://www.eclipseorigins.com/smf"
-        PutVar App.path & "\options.ini", "OPTIONS", "MapCount", "300"
-        SaveOptions
-    Else
-        
-    End If
-    
     LoadOptions
-    MAX_MAPS = Val(GetVar(App.path & "\options.ini", "OPTIONS", "MapCount"))
     
-    If MAX_MAPS <= 0 Then
-        MAX_MAPS = 300
-        PutVar App.path & "\options.ini", "OPTIONS", "MapCount", "300"
-    End If
-        
+    MAX_MAPS = 300
     MAX_PLAYERS = 1500
     MAX_ITEMS = 1000
     MAX_NPCS = 1000
@@ -185,9 +170,7 @@ Public Sub InitServer()
     End If
     
     frmLoad.Visible = False
-    If Options.SilentStartup <> 1 Then
-        frmServer.Show
-    End If
+    frmServer.Show
 
     ' Start listening
     frmServer.Socket(0).Listen
@@ -200,6 +183,9 @@ Public Sub InitServer()
     
     ' Starts the server loop
     ServerLoop
+    
+       
+    
 
 
    On Error GoTo 0

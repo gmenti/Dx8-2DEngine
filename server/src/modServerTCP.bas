@@ -550,7 +550,6 @@ Dim i As Long
         Buffer.WriteLong CharMode
         Buffer.WriteByte 255
         Buffer.WriteString Options.DataFolder
-        Buffer.WriteString Options.UpdateURL
         Buffer.WriteLong App.Major
         Buffer.WriteLong App.Minor
         Buffer.WriteLong App.Revision
@@ -3444,7 +3443,6 @@ Public Sub SendServerOpts(Index As Long)
     Buffer.WriteString Options.Game_Name
     Buffer.WriteString Options.Website
     Buffer.WriteString Options.DataFolder
-    Buffer.WriteString Options.UpdateURL
     Buffer.WriteLong AccountCount
     Buffer.WriteLong TotalOnlinePlayers
     Buffer.WriteLong StartTime - GetTickCount

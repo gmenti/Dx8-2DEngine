@@ -7,7 +7,6 @@ Public GotServerInfo As Boolean
 Public ServerDir As String
 Public ServerIndex As Long
 Public QuitConnecting As Boolean
-Public UpdateURL As String
 
 Public CacheMap As Boolean
 Public MapCacheX As Long

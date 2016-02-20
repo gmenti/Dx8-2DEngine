@@ -2994,7 +2994,6 @@ Dim buffer As clsBuffer
     buffer.WriteLong CSaveServerOpt
     buffer.WriteLong 5
     buffer.WriteString txtDataFolder.Text
-    buffer.WriteString txtUpdateURL.Text
     SendData buffer.ToArray
     Set buffer = Nothing
     
@@ -3419,7 +3418,7 @@ Private Sub scrlMaxLevel_Change()
 
 
    On Error GoTo errorhandler
-    lblmaxlevel.Caption = "Max Level: " & scrlMaxLevel.Value
+    lblMaxLevel.Caption = "Max Level: " & scrlMaxLevel.Value
     
 
 

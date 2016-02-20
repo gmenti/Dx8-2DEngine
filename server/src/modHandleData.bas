@@ -4437,8 +4437,6 @@ Sub HandleRestartServer(ByVal Index As Long, ByRef data() As Byte, ByVal StartAd
         End If
     End If
     
-    If Options.DisableRemoteRestart = 1 Then Exit Sub
-    
     If isShuttingDown = True Then
         shutDownType = 0
         isShuttingDown = False
@@ -4939,8 +4937,6 @@ Sub HandleSaveServerOpt(ByVal Index As Long, ByRef data() As Byte, ByVal StartAd
             s = Buffer.ReadString
             s1 = Buffer.ReadString
             Options.DataFolder = s
-            Options.UpdateURL = s1
-            frmServer.txtUpdateUrl.Text = s1
             frmServer.txtDataFolder.Text = s
             SaveOptions
         Case 6

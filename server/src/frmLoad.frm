@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL32.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "mscomctl.OCX"
 Begin VB.Form frmLoad 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Carregando servidor..."
@@ -63,27 +63,8 @@ Attribute VB_Exposed = False
 Private Sub Form_Load()
 Dim i As Long, x As Long
    On Error GoTo errorhandler
-    InitMessages
-    ' load options, set if they dont exist
-    If Not FileExist(App.path & "\data\options.ini", True) Then
-        Options.Game_Name = "Eclipse Origins"
-        Options.Port = 7001
-        Options.MOTD = "Welcome to Eclipse Origins."
-        Options.Website = "http://www.eclipseorigins.com"
-        Options.SilentStartup = 0
-        Options.Key = GenerateOptionsKey
-        PutVar App.path & "\data\options.ini", "OPTIONS", "MapCount", "300"
-        SaveOptions
-    Else
-        LoadOptions
-    End If
-    
-    If Options.SilentStartup = 1 Then
-        Me.Hide
-    Else
-        Me.Show
-    End If
-    
+
+    Me.Show
     InitServer
 
 

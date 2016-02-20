@@ -138,135 +138,61 @@ errorhandler:
 End Function
 
 Public Sub SaveOptions()
-    
 
-   On Error GoTo errorhandler
-
-    PutVar App.path & "\options.ini", "OPTIONS", "Game_Name", Options.Game_Name
-    PutVar App.path & "\options.ini", "OPTIONS", "Port", STR(Options.Port)
-    PutVar App.path & "\options.ini", "OPTIONS", "MOTD", Options.MOTD
-    PutVar App.path & "\options.ini", "OPTIONS", "Website", Options.Website
-    PutVar App.path & "\options.ini", "OPTIONS", "KEY", Options.Key
-    PutVar App.path & "\options.ini", "OPTIONS", "DataFolder", Options.DataFolder
-    PutVar App.path & "\options.ini", "OPTIONS", "UpdateURL", Options.UpdateURL
-    PutVar App.path & "\options.ini", "OPTIONS", "StaffOnly", STR(Options.StaffOnly)
-    PutVar App.path & "\options.ini", "OPTIONS", "DisableRemoteRestart", STR(Options.DisableRemoteRestart)
-    
-    'New Stuff
-    PutVar App.path & "\options.ini", "GameOptions", "NewCombat", STR(NewOptions.CombatMode)
-    PutVar App.path & "\options.ini", "GameOptions", "MaxLevel", STR(NewOptions.MaxLevel)
-    PutVar App.path & "\options.ini", "GameOptions", "MainMenuMusic", NewOptions.MainMenuMusic
-    PutVar App.path & "\options.ini", "GameOptions", "ItemLoss", STR(NewOptions.ItemLoss)
-    PutVar App.path & "\options.ini", "GameOptions", "ExpLoss", STR(NewOptions.ExpLoss)
-   On Error GoTo 0
-   Exit Sub
-errorhandler:
-    HandleError "SaveOptions", "modDatabase", Err.Number, Err.Description, Erl
-    Err.Clear
+    Query = "UPDATE options SET " & _
+                "gameName = '" & Options.Game_Name & "', " & _
+                "port = " & Options.Port & ", " & _
+                "motd = '" & Options.MOTD & "', " & _
+                "website = '" & Options.Website & "', " & _
+                "keyNumber = " & Options.Key & ", " & _
+                "dataFolder = '" & Options.DataFolder & "', " & _
+                "staffOnly = " & Options.StaffOnly & ", " & _
+                "combatMode = " & NewOptions.CombatMode & ", " & _
+                "maxLevel = " & NewOptions.MaxLevel & ", " & _
+                "mainMenuMusic = '" & NewOptions.MainMenuMusic & "', " & _
+                "itemLoss = " & NewOptions.ItemLoss & ", " & _
+                "expLoss = " & NewOptions.ExpLoss & _
+                " WHERE used = 1"
+    RunQuery
     
 End Sub
 
 Public Sub LoadOptions()
-Dim filepath As String, killfile As Boolean
 
-   On Error GoTo errorhandler
-    
-    If FileExist(App.path & "\options.ini", True) = False Then
-        If FileExist(App.path & "\data\options.ini", True) = True Then
-            filepath = App.path & "\data\options.ini"
-            killfile = True
-        Else
-            
-        End If
-    Else
-        filepath = App.path & "\options.ini"
-    End If
+    'QUERY SQL
+    Query = "SELECT * FROM options"
+    RunQuery
 
-    Options.Game_Name = GetVar(filepath, "OPTIONS", "Game_Name")
-    Options.Port = Val(GetVar(filepath, "OPTIONS", "Port"))
-    Options.MOTD = GetVar(filepath, "OPTIONS", "MOTD")
-    Options.Website = GetVar(filepath, "OPTIONS", "Website")
-    Options.SilentStartup = Val(GetVar(filepath, "OPTIONS", "SilentStartup"))
-    Options.Key = Trim$(GetVar(filepath, "OPTIONS", "KEY"))
-    Options.DataFolder = Trim$(GetVar(filepath, "OPTIONS", "DataFolder"))
-    Options.UpdateURL = Trim$(GetVar(filepath, "OPTIONS", "UpdateURL"))
-    Options.StaffOnly = Val(GetVar(filepath, "OPTIONS", "StaffOnly"))
-    Options.DisableRemoteRestart = Val(GetVar(filepath, "OPTIONS", "DisableRemoteRestart"))
+    'GRAVA OS DADOS DO BANCO EM VARIAVEIS
+    Options.Game_Name = resultadoSql("gameName")
+    Options.Port = resultadoSql("port")
+    Options.MOTD = resultadoSql("motd")
+    Options.Website = resultadoSql("website")
+    Options.Key = resultadoSql("keyNumber")
+    Options.DataFolder = resultadoSql("dataFolder")
+    Options.StaffOnly = resultadoSql("staffOnly")
     
-    If Options.StaffOnly = 1 Then
-        frmServer.chkStaffOnly.Value = 1
-    End If
+    NewOptions.CombatMode = resultadoSql("combatMode")
+    NewOptions.MainMenuMusic = resultadoSql("mainMenuMusic")
+    NewOptions.ItemLoss = resultadoSql("itemLoss")
+    NewOptions.ExpLoss = resultadoSql("expLoss")
     
-    If Options.DisableRemoteRestart = 1 Then
-        frmServer.chkDisableRestart.Value = 1
-    End If
-    
-    
-    
-    If Options.Key = "" Then Options.Key = GenerateOptionsKey: SaveOptions
-    
-    Dim iFileNumber As Integer
-    Dim handle As Integer
-    Dim filetext As String
-    'Loading News and Credits Now too... easier this way :D.
-    If FileExist(App.path & "\data\news.txt", True) Then
-        handle = FreeFile
-        Open App.path & "\data\news.txt" For Input As #handle
-        filetext = Input$(LOF(handle), handle)
-        Close #handle
-        News = filetext
-        frmServer.txtNews.Text = News
-    Else
-        News = ""
-        iFileNumber = FreeFile
-        Open App.path & "\data\news.txt" For Output As #iFileNumber
-        Print #iFileNumber, News
-        Close #iFileNumber
-    End If
-    
-    If FileExist(App.path & "\data\credits.txt", True) Then
-        handle = FreeFile
-        Open App.path & "\data\credits.txt" For Input As #handle
-        filetext = Input$(LOF(handle), handle)
-        Close #handle
-        Credits = filetext
-        frmServer.txtCredits.Text = News
-    Else
-        Credits = ""
-        iFileNumber = FreeFile
-        Open App.path & "\data\credits.txt" For Output As #iFileNumber
-        Print #iFileNumber, Credits
-        Close #iFileNumber
-    End If
-    
-    If Trim$(GetVar(filepath, "GameOptions", "NewCombat")) = "" Then
-        NewOptions.CombatMode = 1
-        NewOptions.MaxLevel = 100
-        SaveOptions
-    Else
-        NewOptions.CombatMode = Val(GetVar(filepath, "GameOptions", "NewCombat"))
-        If NewOptions.CombatMode <> 1 And NewOptions.CombatMode <> 2 Then NewOptions.CombatMode = 1: SaveOptions
-        NewOptions.MaxLevel = Val(GetVar(filepath, "GameOptions", "MaxLevel"))
-        If NewOptions.MaxLevel <= 0 Then NewOptions.MaxLevel = 100: SaveOptions
-        NewOptions.MainMenuMusic = GetVar(filepath, "GameOptions", "MainMenuMusic")
-        NewOptions.ItemLoss = Val(GetVar(filepath, "GameOptions", "ItemLoss"))
-        NewOptions.ExpLoss = Val(GetVar(filepath, "GameOptions", "ExpLoss"))
-    End If
-    
+    NewOptions.MaxLevel = resultadoSql("maxLevel")
     MAX_LEVELS = NewOptions.MaxLevel
     
-    If killfile Then
+    frmServer.chkStaffOnly.Value = Options.StaffOnly
+    
+    News = resultadoSql("news")
+    frmServer.txtNews.Text = News
+    
+    Credits = resultadoSql("credits")
+    frmServer.txtCredits.Text = Credits
+    
+    If Options.Key = "" Then
+        Options.Key = GenerateOptionsKey
         SaveOptions
-        Kill filepath
     End If
-
-
-   On Error GoTo 0
-   Exit Sub
-errorhandler:
-    HandleError "LoadOptions", "modDatabase", Err.Number, Err.Description, Erl
-    Err.Clear
-
+  
 End Sub
 
 Function Ban(ByVal Index As Long, ByVal accname As String, ByVal online As Boolean, Optional reason As String = "") As Boolean

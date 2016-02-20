@@ -117,12 +117,9 @@ Private Type OptionsRec
     MOTD As String
     Port As Long
     Website As String
-    SilentStartup As Long
     Key As String
     DataFolder As String
-    UpdateURL As String
     StaffOnly As Long
-    DisableRemoteRestart As Long
 End Type
 
 Public Type PartyRec
@@ -133,7 +130,7 @@ End Type
 
 Public Type PlayerInvRec
     Num As Long
-    value As Long
+    Value As Long
 End Type
 
 Private Type Cache
@@ -609,7 +606,7 @@ End Type
 
 Private Type MapItemRec
     Num As Long
-    value As Long
+    Value As Long
     x As Byte
     y As Byte
     ' ownership + despawn
