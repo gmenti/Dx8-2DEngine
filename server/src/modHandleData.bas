@@ -4911,18 +4911,12 @@ Sub HandleSaveServerOpt(ByVal Index As Long, ByRef data() As Byte, ByVal StartAd
             s = Buffer.ReadString
             News = s
             frmServer.txtNews.Text = News
-            iFileNumber = FreeFile
-            Open App.path & "\data\news.txt" For Output As #iFileNumber
-            Print #iFileNumber, News
-            Close #iFileNumber
+            SaveOptions
         Case 2 'Credits
             s = Buffer.ReadString
             Credits = s
             frmServer.txtCredits.Text = Credits
-            iFileNumber = FreeFile
-            Open App.path & "\data\credits.txt" For Output As #iFileNumber
-            Print #iFileNumber, Credits
-            Close #iFileNumber
+            SaveOptions
         Case 3 'MOTD
             s = Buffer.ReadString
             Options.MOTD = s

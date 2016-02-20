@@ -141,6 +141,8 @@ Public Sub SaveOptions()
 
     Query = "UPDATE options SET " & _
                 "gameName = '" & Options.Game_Name & "', " & _
+                "credits = '" & Credits & "', " & _
+                "news = '" & News & "', " & _
                 "port = " & Options.Port & ", " & _
                 "motd = '" & Options.MOTD & "', " & _
                 "website = '" & Options.Website & "', " & _
@@ -153,6 +155,7 @@ Public Sub SaveOptions()
                 "itemLoss = " & NewOptions.ItemLoss & ", " & _
                 "expLoss = " & NewOptions.ExpLoss & _
                 " WHERE used = 1"
+    Debug.Print Query
     RunQuery
     
 End Sub

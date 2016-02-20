@@ -1053,11 +1053,7 @@ Private Sub cmdSaveCredits_Click()
    On Error GoTo errorhandler
    
     Credits = txtCredits.Text
-    Dim iFileNumber As Integer
-    iFileNumber = FreeFile
-    Open App.path & "\data\credits.txt" For Output As #iFileNumber
-    Print #iFileNumber, Credits
-    Close #iFileNumber
+    SaveOptions
     
 
 
@@ -1168,11 +1164,7 @@ Private Sub cmdSaveNews_Click()
    On Error GoTo errorhandler
 
     News = txtNews.Text
-    Dim iFileNumber As Integer
-    iFileNumber = FreeFile
-    Open App.path & "\data\news.txt" For Output As #iFileNumber
-    Print #iFileNumber, News
-    Close #iFileNumber
+    SaveOptions
 
 
    On Error GoTo 0
