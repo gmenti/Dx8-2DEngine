@@ -1766,6 +1766,7 @@ Public Function HandleNewCharPanel_MouseUp(X As Long, Y As Long)
                 NCVoltarButtonState = 0
                 MenuStage = 4
                 MENU_ERRO_MSG = vbNullString
+                ResetNewChar
             Else
                 NCVoltarButtonState = 0
             End If
@@ -2007,6 +2008,7 @@ Dim buffer As clsBuffer
             End If
         End If
     End If
+    
     'NewChar Button
     If X >= NewCharButtonBounds.Left And X <= NewCharButtonBounds.Left + NewCharButtonBounds.Right Then
         If Y >= NewCharButtonBounds.Top And Y <= NewCharButtonBounds.Top + NewCharButtonBounds.Bottom Then
@@ -2014,20 +2016,22 @@ Dim buffer As clsBuffer
                 PlaySound CLICK_SOUND, -1, -1
                 menuPreto = True
                 MENU_ERRO_MSG = vbNullString
-                menuPretoMensagem = "Carregando personagem..."
+                menuPretoMensagem = "Carregando..."
+
                 Set buffer = New clsBuffer
                 buffer.WriteLong CUseChar
                 buffer.WriteLong SelectedChar
                 buffer.WriteLong 0
                 SendData buffer.ToArray
-                'MenuStage = 0
                 Set buffer = Nothing
+                
                 NewCharButtonState = 0
             Else
                 NewCharButtonState = 0
             End If
         End If
     End If
+    
     'PrevChar Button
     If X >= PrevCharBounds.Left And X <= PrevCharBounds.Left + PrevCharBounds.Right Then
         If Y >= PrevCharBounds.Top And Y <= PrevCharBounds.Top + PrevCharBounds.Bottom Then

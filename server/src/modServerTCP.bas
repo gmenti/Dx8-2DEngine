@@ -432,7 +432,7 @@ Public Sub AlertMsg(ByVal Index As Long, ByVal Msg As String)
     Buffer.WriteString Msg
     SendDataTo Index, Buffer.ToArray
     DoEvents
-    Call CloseSocket(Index)
+    'Call CloseSocket(Index)
     
     Set Buffer = Nothing
 

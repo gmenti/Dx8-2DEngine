@@ -377,17 +377,19 @@ Public Sub HandleCharSlot(ByVal Index As Long, ByRef data() As Byte, ByVal Start
     Dim i As Long
     Dim n As Long, x As Long
     Dim Email As String
+    Dim op As Long
 
     On Error GoTo errorhandler
-
+    
     If IsPlaying(Index) Or Not IsLoggedIn(Index) Then Exit Sub
     
     Set Buffer = New clsBuffer
     Buffer.WriteBytes data()
     slot = Buffer.ReadLong
+    op = Buffer.ReadLong
     
     'Remover char
-    If Buffer.ReadLong = 1 Then
+    If op = 1 Then
         Email = Trim$(Buffer.ReadString)
         
         If Email <> Trim$(Player(Index).Email) Then
@@ -413,12 +415,11 @@ Public Sub HandleCharSlot(ByVal Index As Long, ByRef data() As Byte, ByVal Start
         ClearBank Index
         LoadBank Index, Trim$(Player(Index).login)
         Exit Sub
-    End If
-
-    'Criar char
-    If Not IsPlaying(Index) Then
-        Call SendNewCharClasses(Index)
-        TempPlayer(Index).CurChar = slot
+    Else
+        If Not IsPlaying(Index) Then
+            Call SendNewCharClasses(Index)
+            TempPlayer(Index).CurChar = slot
+        End If
     End If
             
     Set Buffer = Nothing
@@ -472,6 +473,7 @@ Private Sub HandleAddChar(ByVal Index As Long, ByRef data() As Byte, ByVal Start
     
     If Not validarNovoChar(Nome, Sexo, Classe) Then
         Call AlertMsg(Index, MENU_ERRO_MSG)
+        TempPlayer(Index).CurChar = slot
         Exit Sub
     End If
     
