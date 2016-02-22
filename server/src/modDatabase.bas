@@ -556,10 +556,20 @@ End Sub
 Sub SavePlayer(ByVal Index As Long)
     Dim filename As String, i As Long
     Dim F As Long
+    Dim campos As String
     
 
    On Error GoTo errorhandler
-
+   
+    'CADASTRA CONTA DO JOGADOR DO MYSQL
+    campos = "login='" & Trim$(Player(Index).login) & "', " & _
+                "password='" & Trim$(Player(Index).Password) & "', " & _
+                "email='" & Trim$(Player(Index).Email) & "', " & _
+                "ip='" & Trim$(Player(Index).ip) & "'"
+                
+    Query = "INSERT INTO account SET " & campos & " ON DUPLICATE KEY UPDATE " & campos
+    RunQuery
+    
     ChkDir App.path & "\data\accounts\", Trim$(Player(Index).login)
 
     filename = App.path & "\data\accounts\" & Trim$(Player(Index).login) & "\" & Trim$(Player(Index).login) & ".bin"
