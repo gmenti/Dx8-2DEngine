@@ -298,9 +298,10 @@ Function AccountExist(ByVal Name As String) As Boolean
 
    On Error GoTo errorhandler
 
-    filename = "data\accounts\" & Trim(Name) & "\" & Trim(Name) & ".bin"
-
-    If FileExist(filename) Then
+    Query = "SELECT * FROM account WHERE login='" & Trim(Name) & "'"
+    RunQuery
+    
+    If Not resultadoSql.EOF Then
         AccountExist = True
     End If
 
@@ -320,17 +321,14 @@ Function PasswordOK(ByVal Name As String, ByVal Password As String) As Boolean
 
 
    On Error GoTo errorhandler
-
-    If AccountExist(Name) Then
-        filename = App.path & "\data\accounts\" & Trim$(Name) & "\" & Trim$(Name) & ".bin"
-        nFileNum = FreeFile
-        Open filename For Binary As #nFileNum
-        Get #nFileNum, ACCOUNT_LENGTH, RightPassword
-        Close #nFileNum
-
-        If UCase$(Trim$(Password)) = UCase$(Trim$(RightPassword)) Then
-            PasswordOK = True
-        End If
+   
+    Query = "SELECT * FROM account WHERE login='" & Trim(Name) & "'"
+    RunQuery
+    
+    If resultadoSql.EOF Then Exit Function
+    
+    If Trim$(resultadoSql("password")) = Trim$(Password) Then
+        PasswordOK = True
     End If
 
 
@@ -561,7 +559,7 @@ Sub SavePlayer(ByVal Index As Long)
 
    On Error GoTo errorhandler
    
-    'CADASTRA CONTA DO JOGADOR DO MYSQL
+    'CADASTRA CONTA DO JOGADOR NO MYSQL
     campos = "login='" & Trim$(Player(Index).login) & "', " & _
                 "password='" & Trim$(Player(Index).Password) & "', " & _
                 "email='" & Trim$(Player(Index).Email) & "', " & _
@@ -571,17 +569,6 @@ Sub SavePlayer(ByVal Index As Long)
     RunQuery
     
     ChkDir App.path & "\data\accounts\", Trim$(Player(Index).login)
-
-    filename = App.path & "\data\accounts\" & Trim$(Player(Index).login) & "\" & Trim$(Player(Index).login) & ".bin"
-    
-    F = FreeFile
-    
-    Open filename For Binary As #F
-    Put #F, , Player(Index).login
-    Put #F, , Player(Index).Password
-    Put #F, , Player(Index).Email
-    Put #F, , Player(Index).ip
-    Close #F
     
     For i = 1 To MAX_PLAYER_CHARS
         filename = App.path & "\data\accounts\" & Trim$(Player(Index).login) & "\" & Trim$(Player(Index).login) & "_char" & CStr(i) & ".bin"
@@ -608,17 +595,19 @@ Sub LoadPlayer(ByVal Index As Long, ByVal Name As String)
    On Error GoTo errorhandler
 
     Call ClearPlayer(Index)
-    filename = App.path & "\data\accounts\" & Trim(Name) & "\" & Trim$(Name) & ".bin"
-    F = FreeFile
-    Open filename For Binary As #F
-    Get #F, , Player(Index).login
-    Get #F, , Player(Index).Password
-    Get #F, , Player(Index).Email
+    
+    Query = "SELECT * FROM account WHERE login='" & Trim(Name) & "'"
+    RunQuery
+    
+    Player(Index).login = resultadoSql("login")
+    Player(Index).Password = resultadoSql("password")
+    Player(Index).Email = resultadoSql("email")
     Player(Index).ip = Trim$(GetPlayerIP(Index))
+    
     If AccountCount > 0 Then
         account(FindAccount(Trim$(Player(Index).login))).ip = Trim$(GetPlayerIP(Index))
     End If
-    Close #F
+    
     For i = 1 To MAX_PLAYER_CHARS
         filename = App.path & "\data\accounts\" & Trim(Name) & "\" & Trim$(Name) & "_char" & CStr(i) & ".bin"
         F = FreeFile
@@ -2964,7 +2953,9 @@ Dim dirLoc As String, filename As String, x As Long, i As Long
 Dim dirLoc2 As String, x2 As String, i2 As String
 
    On Error GoTo errorhandler
-
+   
+    MsgBox "entrou aqui"
+    
     AccountCount = 0
     dirLoc = Dir$(App.path & "\data\accounts\*.*", vbDirectory)
     x = 1
@@ -2972,7 +2963,7 @@ Dim dirLoc2 As String, x2 As String, i2 As String
         If dirLoc <> "." And dirLoc <> ".." Then
             On Error Resume Next
             If GetAttr(App.path & "\data\accounts\" & dirLoc) = vbDirectory Then
-                filename = App.path & "\data\accounts\" & dirLoc & "\" & dirLoc & ".bin"
+                filename = App.path & "\data\accounts\" & dirLoc & "\" & dirLoc & "_char1.bin"
                 If FileExist(filename, True) Then
                     AccountCount = AccountCount + 1
                     ReDim Preserve account(AccountCount)
@@ -3003,23 +2994,21 @@ Sub LoadAccount(Index As Long, Name As String)
 
    On Error GoTo errorhandler
    
-   filename = App.path & "\data\accounts\" & Trim$(Name) & "\" & Trim$(Name) & ".bin"
-
     With account(Index)
-        F = FreeFile
+    
+        Query = "SELECT * FROM account WHERE login='" & Trim(Name) & "'"
+        .login = resultadoSql("login")
+        .pass = Len(Trim$(resultadoSql("login")))
+        .ip = resultadoSql("ip")
         
-        Open filename For Binary As #F
-            Get #F, , .login
-            Get #F, , pass
-            .pass = Len(Trim$(pass))
-            Get #F, , .ip
-        Close #F
         For i = 1 To MAX_PLAYER_CHARS
             filename = App.path & "\data\accounts\" & Trim(Name) & "\" & Trim$(Name) & "_char" & CStr(i) & ".bin"
             F = FreeFile
+            
             Open filename For Binary As #F
-            Get #F, , MonkeyPlayer.characters(i)
+                Get #F, , MonkeyPlayer.characters(i)
             Close #F
+            
             .characters(i) = Trim$(MonkeyPlayer.characters(i).Name)
             If MonkeyPlayer.characters(i).access > .access Then
                 .access = MonkeyPlayer.characters(i).access
