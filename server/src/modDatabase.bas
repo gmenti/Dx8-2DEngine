@@ -555,10 +555,12 @@ Sub SavePlayer(ByVal Index As Long)
     Dim filename As String, i As Long
     Dim F As Long
     Dim campos As String
+    Dim time1, time2 As Long
     
-
+    
    On Error GoTo errorhandler
    
+    time1 = GetTickCount
     'CADASTRA CONTA DO JOGADOR NO MYSQL
     campos = "login='" & Trim$(Player(Index).login) & "', " & _
                 "password='" & Trim$(Player(Index).Password) & "', " & _
@@ -578,6 +580,9 @@ Sub SavePlayer(ByVal Index As Long)
         Put #F, , Player(Index).characters(i)
         Close #F
     Next
+    
+    time2 = GetTickCount
+    Call SetStatus(Player(Index).login & " foi salvo em " & time2 - time1 & "ms.")
 
 
    On Error GoTo 0
@@ -599,7 +604,7 @@ Sub LoadPlayer(ByVal Index As Long, ByVal Name As String)
     Query = "SELECT * FROM account WHERE login='" & Trim(Name) & "'"
     RunQuery
     
-    Player(Index).login = resultadoSql("login")
+    Player(Index).login = Trim(resultadoSql("login"))
     Player(Index).Password = resultadoSql("password")
     Player(Index).Email = resultadoSql("email")
     Player(Index).ip = Trim$(GetPlayerIP(Index))
@@ -2954,8 +2959,6 @@ Dim dirLoc2 As String, x2 As String, i2 As String
 
    On Error GoTo errorhandler
    
-    MsgBox "entrou aqui"
-    
     AccountCount = 0
     dirLoc = Dir$(App.path & "\data\accounts\*.*", vbDirectory)
     x = 1
