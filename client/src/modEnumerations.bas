@@ -181,7 +181,6 @@ Public Enum ClientPackets
     CRequestEditSpell
     CSaveSpell
     CSetAccess
-    CWhosOnline
     CSetMotd
     CSearch
     CSpells

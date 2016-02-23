@@ -755,45 +755,6 @@ errorhandler:
     Err.Clear
 End Sub
 
-' *****************************
-' ** Outgoing Server Packets **
-' *****************************
-Sub SendWhosOnline(ByVal Index As Long)
-    Dim s As String
-    Dim n As Long
-    Dim i As Long
-
-
-   On Error GoTo errorhandler
-
-    For i = 1 To Player_HighIndex
-
-        If IsPlaying(i) Then
-            If i <> Index Then
-                s = s & GetPlayerName(i) & ", "
-                n = n + 1
-            End If
-        End If
-
-    Next
-
-    If n = 0 Then
-        s = "There are no other players online."
-    Else
-        s = Mid$(s, 1, Len(s) - 2)
-        s = "There are " & n & " other players online: " & s & "."
-    End If
-
-    Call PlayerMsg(Index, s, WhoColor)
-
-
-   On Error GoTo 0
-   Exit Sub
-errorhandler:
-    HandleError "SendWhosOnline", "modServerTCP", Err.Number, Err.Description, Erl
-    Err.Clear
-End Sub
-
 Function PlayerData(ByVal Index As Long) As Byte()
     Dim Buffer As clsBuffer, i As Long
 
@@ -1499,10 +1460,6 @@ Sub SendWelcome(ByVal Index As Long)
     If LenB(Options.MOTD) > 0 Then
         Call PlayerMsg(Index, Options.MOTD, BrightCyan)
     End If
-
-    ' Send whos online
-    Call SendWhosOnline(Index)
-
 
    On Error GoTo 0
    Exit Sub

@@ -1201,28 +1201,6 @@ errorhandler:
 
 End Sub
 
-Public Sub SendWhosOnline()
-Dim buffer As clsBuffer
-
-
-   On Error GoTo errorhandler
-
-    Set buffer = New clsBuffer
-    buffer.WriteLong CWhosOnline
-    SendData buffer.ToArray()
-    Set buffer = Nothing
-
-
-
-
-   On Error GoTo 0
-   Exit Sub
-errorhandler:
-    HandleError "SendWhosOnline", "modClientTCP", Err.Number, Err.Description, Erl
-    Err.Clear
-
-End Sub
-
 Public Sub SendMOTDChange(ByVal MOTD As String)
 Dim buffer As clsBuffer
 

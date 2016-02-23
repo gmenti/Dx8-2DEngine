@@ -1,7 +1,7 @@
 frmMain = 75, 75, 959, 540, C, 125, 125, 1009, 550, C
 modText = 50, 50, 1049, 375, C
 modTypes = 200, 200, 1084, 625, C
-modGameLogic = 100, 100, 1099, 425, Z
+modGameLogic = 100, 100, 1099, 425, 
 modClientTCP = 150, 150, 1034, 575, C
 frmLoad = 75, 75, 959, 500, C, 175, 175, 1059, 600, C
 frmEditor_MapProperties = 150, 150, 1034, 575, C, 200, 200, 1084, 625, C

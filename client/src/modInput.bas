@@ -341,9 +341,6 @@ Dim buffer As clsBuffer
                         buffer.WriteString Command(1)
                         SendData buffer.ToArray()
                         Set buffer = Nothing
-                        ' Whos Online
-                    Case "/who"
-                        SendWhosOnline
                         ' Checking fps
                     Case "/fps"
                         BFPS = Not BFPS

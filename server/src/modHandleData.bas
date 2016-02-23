@@ -60,7 +60,6 @@ Public Sub InitMessages()
     HandleDataSub(CRequestEditSpell) = GetAddress(AddressOf HandleRequestEditspell)
     HandleDataSub(CSaveSpell) = GetAddress(AddressOf HandleSaveSpell)
     HandleDataSub(CSetAccess) = GetAddress(AddressOf HandleSetAccess)
-    HandleDataSub(CWhosOnline) = GetAddress(AddressOf HandleWhosOnline)
     HandleDataSub(CSetMotd) = GetAddress(AddressOf HandleSetMotd)
     HandleDataSub(CSearch) = GetAddress(AddressOf HandleSearch)
     HandleDataSub(CSpells) = GetAddress(AddressOf HandleSpells)
@@ -2403,23 +2402,6 @@ errorhandler:
     HandleError "HandleSetAccess", "modHandleData", Err.Number, Err.Description, Erl
     Err.Clear
 
-End Sub
-
-' :::::::::::::::::::::::
-' :: Who online packet ::
-' :::::::::::::::::::::::
-Sub HandleWhosOnline(ByVal Index As Long, ByRef data() As Byte, ByVal StartAddr As Long, ByVal ExtraVar As Long)
-
-   On Error GoTo errorhandler
-
-    Call SendWhosOnline(Index)
-
-
-   On Error GoTo 0
-   Exit Sub
-errorhandler:
-    HandleError "HandleWhosOnline", "modHandleData", Err.Number, Err.Description, Erl
-    Err.Clear
 End Sub
 
 ' :::::::::::::::::::::

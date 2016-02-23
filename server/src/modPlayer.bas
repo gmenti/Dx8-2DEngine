@@ -35,9 +35,7 @@ Sub JoinGame(ByVal Index As Long)
    On Error GoTo errorhandler
 
     SendMaxes Index
-    
-
-    
+        
     ' Set the flag so we know the person is in the game
     TempPlayer(Index).InGame = True
     'Update the log
@@ -76,6 +74,7 @@ Sub JoinGame(ByVal Index As Long)
     For i = 1 To Vitals.Vital_Count - 1
         Call SendVital(Index, i)
     Next
+    
     SendEXP Index
     Call SendStats(Index)
     
@@ -96,9 +95,9 @@ Sub JoinGame(ByVal Index As Long)
     
     ' Send a global message that he/she joined
     If GetPlayerAccess(Index) <= ADMIN_MONITOR Then
-        Call GlobalMsg(GetPlayerName(Index) & " has joined " & Options.Game_Name & "!", Cyan)
+        Call GlobalMsg(GetPlayerName(Index) & " está online!", Cyan)
     Else
-        Call GlobalMsg(GetPlayerName(Index) & " has joined " & Options.Game_Name & "!", BrightRed)
+        Call GlobalMsg(GetPlayerName(Index) & " está online!", BrightRed)
     End If
     
     For i = 1 To Player_HighIndex
@@ -150,7 +149,7 @@ Sub LeftGame(ByVal Index As Long)
             ' clear out trade
             For i = 1 To MAX_INV
                 TempPlayer(tradeTarget).TradeOffer(i).Num = 0
-                TempPlayer(tradeTarget).TradeOffer(i).value = 0
+                TempPlayer(tradeTarget).TradeOffer(i).Value = 0
             Next
             TempPlayer(tradeTarget).InTrade = 0
             SendCloseTrade tradeTarget
@@ -1192,8 +1191,8 @@ Sub PlayerMapGetItem(ByVal Index As Long)
                             Call SetPlayerInvItemNum(Index, n, MapItem(MapNum, i).Num)
     
                             If Item(GetPlayerInvItemNum(Index, n)).Stackable = 1 Then
-                                Call SetPlayerInvItemValue(Index, n, GetPlayerInvItemValue(Index, n) + MapItem(MapNum, i).value)
-                                Msg = MapItem(MapNum, i).value & " " & Trim$(Item(GetPlayerInvItemNum(Index, n)).Name)
+                                Call SetPlayerInvItemValue(Index, n, GetPlayerInvItemValue(Index, n) + MapItem(MapNum, i).Value)
+                                Msg = MapItem(MapNum, i).Value & " " & Trim$(Item(GetPlayerInvItemNum(Index, n)).Name)
                             Else
                                 Call SetPlayerInvItemValue(Index, n, 0)
                                 Msg = Trim$(Item(GetPlayerInvItemNum(Index, n)).Name)
@@ -1281,19 +1280,19 @@ Sub PlayerMapDropItem(ByVal Index As Long, ByVal invNum As Long, ByVal Amount As
 
                     ' Check if its more then they have and if so drop it all
                     If Amount >= GetPlayerInvItemValue(Index, invNum) Then
-                        MapItem(GetPlayerMap(Index), i).value = GetPlayerInvItemValue(Index, invNum)
+                        MapItem(GetPlayerMap(Index), i).Value = GetPlayerInvItemValue(Index, invNum)
                         Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " drops " & GetPlayerInvItemValue(Index, invNum) & " " & Trim$(Item(GetPlayerInvItemNum(Index, invNum)).Name) & ".", Yellow)
                         Call SetPlayerInvItemNum(Index, invNum, 0)
                         Call SetPlayerInvItemValue(Index, invNum, 0)
                     Else
-                        MapItem(GetPlayerMap(Index), i).value = Amount
+                        MapItem(GetPlayerMap(Index), i).Value = Amount
                         Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " drops " & Amount & " " & Trim$(Item(GetPlayerInvItemNum(Index, invNum)).Name) & ".", Yellow)
                         Call SetPlayerInvItemValue(Index, invNum, GetPlayerInvItemValue(Index, invNum) - Amount)
                     End If
 
                 Else
                     ' Its not a currency object so this is easy
-                    MapItem(GetPlayerMap(Index), i).value = 0
+                    MapItem(GetPlayerMap(Index), i).Value = 0
                     ' send message
                     Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " drops " & CheckGrammar(Trim$(Item(GetPlayerInvItemNum(Index, invNum)).Name)) & ".", Yellow)
                     Call SetPlayerInvItemNum(Index, invNum, 0)
@@ -1648,11 +1647,11 @@ errorhandler:
     Err.Clear
 End Function
 
-Sub SetPlayerVital(ByVal Index As Long, ByVal Vital As Vitals, ByVal value As Long)
+Sub SetPlayerVital(ByVal Index As Long, ByVal Vital As Vitals, ByVal Value As Long)
 
    On Error GoTo errorhandler
 
-    Player(Index).characters(TempPlayer(Index).CurChar).Vital(Vital) = value
+    Player(Index).characters(TempPlayer(Index).CurChar).Vital(Vital) = Value
 
     If GetPlayerVital(Index, Vital) > GetPlayerMaxVital(Index, Vital) Then
         Player(Index).characters(TempPlayer(Index).CurChar).Vital(Vital) = GetPlayerMaxVital(Index, Vital)
@@ -1714,14 +1713,14 @@ errorhandler:
     Err.Clear
 End Function
 
-Public Sub SetPlayerStat(ByVal Index As Long, ByVal stat As Stats, ByVal value As Long)
+Public Sub SetPlayerStat(ByVal Index As Long, ByVal stat As Stats, ByVal Value As Long)
 
    On Error GoTo errorhandler
 
-    Player(Index).characters(TempPlayer(Index).CurChar).stat(stat) = value
+    Player(Index).characters(TempPlayer(Index).CurChar).stat(stat) = Value
     If Player(Index).characters(TempPlayer(Index).CurChar).Pet.Alive Then
         If Player(Index).characters(TempPlayer(Index).CurChar).Pet.AdoptiveStats Then
-            Player(Index).characters(TempPlayer(Index).CurChar).Pet.stat(stat) = value
+            Player(Index).characters(TempPlayer(Index).CurChar).Pet.stat(stat) = Value
         End If
     End If
 
@@ -1943,7 +1942,7 @@ Function GetPlayerInvItemValue(ByVal Index As Long, ByVal invslot As Long) As Lo
    On Error GoTo errorhandler
 
     If Index > MAX_PLAYERS Then Exit Function
-    GetPlayerInvItemValue = Player(Index).characters(TempPlayer(Index).CurChar).Inv(invslot).value
+    GetPlayerInvItemValue = Player(Index).characters(TempPlayer(Index).CurChar).Inv(invslot).Value
 
 
    On Error GoTo 0
@@ -1957,7 +1956,7 @@ Sub SetPlayerInvItemValue(ByVal Index As Long, ByVal invslot As Long, ByVal item
 
    On Error GoTo errorhandler
 
-    Player(Index).characters(TempPlayer(Index).CurChar).Inv(invslot).value = itemvalue
+    Player(Index).characters(TempPlayer(Index).CurChar).Inv(invslot).Value = itemvalue
 
 
    On Error GoTo 0
@@ -2081,9 +2080,9 @@ Sub OnDeath(ByVal Index As Long)
     If TempPlayer(Index).InTrade > 0 Then
         For i = 1 To MAX_INV
             TempPlayer(Index).TradeOffer(i).Num = 0
-            TempPlayer(Index).TradeOffer(i).value = 0
+            TempPlayer(Index).TradeOffer(i).Value = 0
             TempPlayer(TempPlayer(Index).InTrade).TradeOffer(i).Num = 0
-            TempPlayer(TempPlayer(Index).InTrade).TradeOffer(i).value = 0
+            TempPlayer(TempPlayer(Index).InTrade).TradeOffer(i).Value = 0
         Next
         
         TempPlayer(Index).InTrade = 0
@@ -2316,7 +2315,7 @@ Function GetPlayerBankItemValue(ByVal Index As Long, ByVal BankSlot As Long) As 
 
    On Error GoTo errorhandler
 
-    GetPlayerBankItemValue = Bank(Index).Item(BankSlot).value
+    GetPlayerBankItemValue = Bank(Index).Item(BankSlot).Value
 
 
    On Error GoTo 0
@@ -2330,7 +2329,7 @@ Sub SetPlayerBankItemValue(ByVal Index As Long, ByVal BankSlot As Long, ByVal it
 
    On Error GoTo errorhandler
 
-    Bank(Index).Item(BankSlot).value = itemvalue
+    Bank(Index).Item(BankSlot).Value = itemvalue
 
 
    On Error GoTo 0
