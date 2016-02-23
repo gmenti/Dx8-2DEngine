@@ -641,6 +641,7 @@ Public ChatboxPnlY As Long
 Public ChatboxPnlWidth As Long
 Public ChatboxPnlHeight As Long
 Public ChatboxPnlImage As DX8TextureRec
+Public ChatboxPnlImage2 As DX8TextureRec
 Public ChatboxPnlBounds As rect
 Public ChatboxPnlSrcBounds As rect
 Public ChatboxX As Long
@@ -16298,6 +16299,12 @@ Dim i As Long, filename As String
             ChatboxPnlImage.Texture = NumTextures
             'Textures Dynamic     LoadTextureure ChatboxPnlImage
         End If
+        
+        NumTextures = NumTextures + 1
+        ReDim Preserve gTexture(NumTextures)
+        ChatboxPnlImage2.filepath = App.path & GFX_PATH & "gui\331.png"
+        ChatboxPnlImage2.Texture = NumTextures
+        
                 'Chatbox
         ChatboxX = Val(GetVar(filename, "InGame", "ChatboxX"))
         ChatboxY = Val(GetVar(filename, "InGame", "ChatboxY"))
@@ -19182,20 +19189,32 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
         sW = ChatboxPnlSrcBounds.Right
         sH = ChatboxPnlSrcBounds.Bottom
         If dw > 0 And dH > 0 And (dw + dX) > 0 And (dY + dH) > 0 Then
-            If ChatboxPnlImage.Texture > 0 Then
-                'RenderTexture ChatboxPnlImage, dX, dY, sx, sy, dw, sH, sW, sH
+            
+            If chatOn Then
+                If ChatboxPnlImage.Texture > 0 Then
+                    RenderTexture ChatboxPnlImage, dX, dY, sx, sy, dw, sH, sW, sH
+                End If
+            Else
+                If ChatboxPnlImage.Texture > 0 Then
+                    RenderTexture ChatboxPnlImage2, dX, dY, sx, sy, dw, sH, sW, sH
+                End If
             End If
+            
             If ChatScroll > 0 Then
                 RenderChatTextBuffer
             End If
+            
             If MyTextBounds.Right - MyTextBounds.Left > 10 Then
                 If chatOn Then
                     RenderText Font_Georgia, LimitText(Font_Georgia, RenderChatText & chatShowLine, MyTextBounds.Right - MyTextBounds.Left), MyTextBounds.Left, MyTextBounds.Top, FontColor
                 Else
-                    RenderText Font_Georgia, LimitText(Font_Georgia, "Press Enter to begin chatting.", MyTextBounds.Right - MyTextBounds.Left), MyTextBounds.Left, MyTextBounds.Top, FontColor
+                    RenderText Font_Georgia, LimitText(Font_Georgia, "Aperte (Enter) para abrir o chat.", MyTextBounds.Right - MyTextBounds.Left), MyTextBounds.Left, MyTextBounds.Top, FontColor
                 End If
             End If
         End If
+        
+        If Not chatOn Then Exit Sub
+        
             'ChatUp Btn
         dX = ChatUpBtnBounds.Left
         dY = ChatUpBtnBounds.Top
