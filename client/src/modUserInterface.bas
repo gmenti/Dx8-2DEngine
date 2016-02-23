@@ -19183,7 +19183,7 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
         sH = ChatboxPnlSrcBounds.Bottom
         If dw > 0 And dH > 0 And (dw + dX) > 0 And (dY + dH) > 0 Then
             If ChatboxPnlImage.Texture > 0 Then
-                RenderTexture ChatboxPnlImage, dX, dY, sx, sy, dw, sH, sW, sH
+                'RenderTexture ChatboxPnlImage, dX, dY, sx, sy, dw, sH, sW, sH
             End If
             If ChatScroll > 0 Then
                 RenderChatTextBuffer
@@ -19297,7 +19297,7 @@ End Sub
 
 Sub DrawHotbar()
 Dim sRect As rect, dRect As rect, i As Long, Num As String, n As Long, destRect As D3DRECT
-Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long, x As Long
+Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long, X As Long
 
         'HotbarPnl
 
@@ -19336,10 +19336,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19378,10 +19378,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19419,10 +19419,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19460,10 +19460,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19501,10 +19501,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19542,10 +19542,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19583,10 +19583,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19624,10 +19624,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19665,10 +19665,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19706,10 +19706,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19747,10 +19747,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -19788,10 +19788,10 @@ Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW A
                         If spell(Hotbar(i).slot).Icon > 0 Then
                             If spell(Hotbar(i).slot).Icon <= NumSpellIcons Then
                                 ' check for cooldown
-                                For x = 1 To MAX_PLAYER_SPELLS
-                                    If PlayerSpells(x) = Hotbar(i).slot Then
+                                For X = 1 To MAX_PLAYER_SPELLS
+                                    If PlayerSpells(X) = Hotbar(i).slot Then
                                         ' has spell
-                                        If Not SpellCD(x) = 0 Then
+                                        If Not SpellCD(X) = 0 Then
                                             n = 1
                                         End If
                                     End If
@@ -21237,7 +21237,7 @@ Sub DrawInventory()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
 
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect, srcRect As D3DRECT, destRect As D3DRECT
 Dim colour As Long
@@ -21266,20 +21266,20 @@ Dim tmpItem As Long, amountModifier As Long
                             amountModifier = 0
                 ' exit out if we're offering item in a trade.
                 If InTrade > 0 Then
-                    For x = 1 To MAX_INV
-                        tmpItem = GetPlayerInvItemNum(MyIndex, TradeYourOffer(x).Num)
-                        If TradeYourOffer(x).Num = i Then
+                    For X = 1 To MAX_INV
+                        tmpItem = GetPlayerInvItemNum(MyIndex, TradeYourOffer(X).Num)
+                        If TradeYourOffer(X).Num = i Then
                             ' check if currency
                             If Not Item(tmpItem).Stackable = 1 Then
                                 ' normal item, exit out
                                 GoTo NextLoop
                             Else
                                 ' if amount = all currency, remove from inventory
-                                If TradeYourOffer(x).Value = GetPlayerInvItemValue(MyIndex, i) Then
+                                If TradeYourOffer(X).Value = GetPlayerInvItemValue(MyIndex, i) Then
                                     GoTo NextLoop
                                 Else
                                     ' not all, change modifier to show change in currency count
-                                    amountModifier = TradeYourOffer(x).Value
+                                    amountModifier = TradeYourOffer(X).Value
                                 End If
                             End If
                         End If
@@ -21287,7 +21287,7 @@ Dim tmpItem As Long, amountModifier As Long
                 End If
                             If InMailbox Then
                     If MailBoxMenu = 3 Then
-                        For x = 1 To MAX_INV
+                        For X = 1 To MAX_INV
                             tmpItem = GetPlayerInvItemNum(MyIndex, MailItem)
                             If MailItem = i Then
                                 ' check if currency
@@ -21362,8 +21362,8 @@ Dim tmpItem As Long, amountModifier As Long
                         ' If item is a stack - draw the amount you have
                         If GetPlayerInvItemValue(MyIndex, i) > 1 Then
                             If rec_pos.Right > 0 And rec_pos.Bottom > 0 Then
-                                y = rec_pos.Top + 22
-                                x = rec_pos.Left - 4
+                                Y = rec_pos.Top + 22
+                                X = rec_pos.Left - 4
                                                             Amount = GetPlayerInvItemValue(MyIndex, i) - amountModifier
                                                             ' Draw currency but with k, m, b etc. using a convertion function
                                 If Amount < 1000000 Then
@@ -21387,7 +21387,7 @@ Dim tmpItem As Long, amountModifier As Long
                                     Case 5 ' orange
                                         colour = Purple
                                 End Select
-                                RenderText Font_Georgia, Format$(ConvertCurrency(str(Amount)), "#,###,###,###"), x, y, colour, 0
+                                RenderText Font_Georgia, Format$(ConvertCurrency(str(Amount)), "#,###,###,###"), X, Y, colour, 0
                             End If
                         End If
                     End If
@@ -21455,7 +21455,7 @@ End Sub
 Sub DrawAnimatedInvItems()
 Dim i As Long
 Dim ItemNum As Long, itemPic As Long
-Dim x As Long, y As Long
+Dim X As Long, Y As Long
 Dim MaxFrames As Byte
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect, tOffsetX As Long, tOffsetY As Long
@@ -21557,11 +21557,11 @@ Dim rec As rect, rec_pos As rect, tOffsetX As Long, tOffsetY As Long
                     ' If item is a stack - draw the amount you have
                     If GetPlayerInvItemValue(MyIndex, i) > 1 Then
                         If rec_pos.Right > 0 And rec_pos.Bottom > 0 Then
-                            y = rec_pos.Top + 22
-                            x = rec_pos.Left - 4
+                            Y = rec_pos.Top + 22
+                            X = rec_pos.Left - 4
                             Amount = CStr(GetPlayerInvItemValue(MyIndex, i))
                             ' Draw currency but with k, m, b etc. using a convertion function
-                            RenderText Font_Georgia, ConvertCurrency(Amount), x, y, Yellow, 0
+                            RenderText Font_Georgia, ConvertCurrency(Amount), X, Y, Yellow, 0
                         End If
                     End If
                 End If
@@ -21855,7 +21855,7 @@ errorhandler:
     Err.Clear
 End Sub
 
-Public Sub DrawItemDesc(ByVal ItemNum As Long, ByVal x As Long, ByVal y As Long, Optional ByVal soulBound As Boolean = False)
+Public Sub DrawItemDesc(ByVal ItemNum As Long, ByVal X As Long, ByVal Y As Long, Optional ByVal soulBound As Boolean = False)
 Dim colour As Long, descString As String, theName As String, className As String, levelTxt As String, sInfo() As String, i As Long, Width As Long, Height As Long
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
     ' get out
@@ -22000,7 +22000,7 @@ errorhandler:
 End Sub
 
 Public Sub DrawMenuErro()
-Dim x, y, i, i2 As Long
+Dim X, Y, i, i2 As Long
 Dim tamanho As Long
 Dim quantidade As Long
 
@@ -22014,20 +22014,20 @@ Dim quantidade As Long
     Next
     
     tamanho = tamanho + 60
-    y = 185
+    Y = 185
     
     For i = 1 To 22
-        x = 800 / 2 - tamanho / 2
-        RenderTexture ErroLeftImage, x, y + i, 0, 0, 62, 1, 62, 1
+        X = 800 / 2 - tamanho / 2
+        RenderTexture ErroLeftImage, X, Y + i, 0, 0, 62, 1, 62, 1
         For i2 = 0 To quantidade
-            x = x + 62
-            RenderTexture ErroCenterImage, x, y + i, 0, 0, 62, 1, 62, 1
+            X = X + 62
+            RenderTexture ErroCenterImage, X, Y + i, 0, 0, 62, 1, 62, 1
         Next
-        x = x + 60
-        RenderTexture ErroRightImage, x, y + i, 0, 0, 62, 1, 62, 1
+        X = X + 60
+        RenderTexture ErroRightImage, X, Y + i, 0, 0, 62, 1, 62, 1
     Next
     
-    RenderText Font_Default, MENU_ERRO_MSG, 400 - (getWidth(Font_Default, (Trim$(MENU_ERRO_MSG))) / 2), y + 4, BrightRed
+    RenderText Font_Default, MENU_ERRO_MSG, 400 - (getWidth(Font_Default, (Trim$(MENU_ERRO_MSG))) / 2), Y + 4, BrightRed
     
 End Sub
 
@@ -22307,7 +22307,7 @@ errorhandler:
     Err.Clear
 End Sub
 
-Public Sub DrawSpellDesc(ByVal Spellnum As Long, ByVal x As Long, ByVal y As Long)
+Public Sub DrawSpellDesc(ByVal Spellnum As Long, ByVal X As Long, ByVal Y As Long)
 Dim colour As Long, descString As String, theName As String, className As String, levelTxt As String, sInfo() As String, i As Long, Width As Long, Height As Long
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
     ' get out
@@ -22745,7 +22745,7 @@ End Sub
 
 Sub DrawPartyPanel()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
-Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, curIndex As Long, i As Long, x As Long
+Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, curIndex As Long, i As Long, X As Long
     'PartyPnl
 
    On Error GoTo errorhandler
@@ -22808,7 +22808,7 @@ Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, 
                             End If
                         End If
                     End If
-                ElseIf x = 0 Then
+                ElseIf X = 0 Then
                     If Party.Member(curIndex) > 0 Then
                         curName = Trim$(Player(Party.Member(curIndex)).Name)
                         'PartyMember1Name
@@ -22854,9 +22854,9 @@ Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, 
                                 End If
                             End If
                         End If
-                        x = 1
+                        X = 1
                     End If
-                ElseIf x = 1 Then
+                ElseIf X = 1 Then
                     If Party.Member(curIndex) > 0 Then
                         curName = Trim$(Player(Party.Member(curIndex)).Name)
                         'PartyMember2Name
@@ -22898,9 +22898,9 @@ Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, 
                                 RenderTexture PartyMember2MPBarImage, dX, dY, sx, sy, curBarWidth, dH, curBarWidth, sH, -1
                             End If
                         End If
-                        x = 2
+                        X = 2
                     End If
-                ElseIf x = 2 Then
+                ElseIf X = 2 Then
                     If Party.Member(curIndex) > 0 Then
                         curName = Trim$(Player(Party.Member(curIndex)).Name)
                         'PartyMember3Name
@@ -23093,7 +23093,7 @@ End Sub
 
 Sub DrawFriendsPanel()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
-Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, curIndex As Long, i As Long, x As Long, lineCount As Long
+Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, curIndex As Long, i As Long, X As Long, lineCount As Long
 Dim startX As Long, maxScroll As Long
     'FriendsPnl
 
@@ -23122,20 +23122,20 @@ Dim startX As Long, maxScroll As Long
                 maxScroll = Int((FriendCount / lineCount))
                 If FriendListScroll > maxScroll Then FriendListScroll = 1
                 For i = (lineCount * FriendListScroll) + 1 To (lineCount * FriendListScroll) + lineCount
-                    x = i - (lineCount * FriendListScroll) - 1
+                    X = i - (lineCount * FriendListScroll) - 1
                     If i > FriendCount Then
                         Exit For
                     End If
                     If FriendSelection = i Then
-                        RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (x * 14), Yellow
+                        RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (X * 14), Yellow
                     Else
-                        If GlobalX >= dX And GlobalX <= dX + dw And GlobalY >= dY + 2 + (x * 14) And GlobalY <= dY + 2 + ((x + 1) * 14) Then
-                            RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (x * 14), White
+                        If GlobalX >= dX And GlobalX <= dX + dw And GlobalY >= dY + 2 + (X * 14) And GlobalY <= dY + 2 + ((X + 1) * 14) Then
+                            RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (X * 14), White
                         Else
                             If FriendOnline(i) = 1 Then
-                                RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (x * 14), FontColor
+                                RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (X * 14), FontColor
                             Else
-                                RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (x * 14), Red
+                                RenderText Font_Georgia, TrimText(Font_Georgia, FriendsList(i), dw - 8), dX + 4, dY + 2 + (X * 14), Red
                             End If
                         End If
                     End If
@@ -23379,7 +23379,7 @@ End Sub
 
 Sub DrawQuestsPanel()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
-Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, curIndex As Long, i As Long, x As Long, lineCount As Long
+Dim tOffsetX As Long, tOffsetY As Long, curName As String, curBarWidth As Long, curIndex As Long, i As Long, X As Long, lineCount As Long
 Dim startX As Long, maxScroll As Long, temptext As String
     'QuestsPnl
 
@@ -23408,7 +23408,7 @@ Dim startX As Long, maxScroll As Long, temptext As String
                 maxScroll = Int((QuestCount / lineCount))
                 If QuestListScroll > maxScroll Then QuestListScroll = 1
                 For i = (lineCount * QuestListScroll) + 1 To (lineCount * QuestListScroll) + lineCount
-                    x = i - (lineCount * QuestListScroll) - 1
+                    X = i - (lineCount * QuestListScroll) - 1
                     If i > QuestCount Then
                         Exit For
                     End If
@@ -23418,17 +23418,17 @@ Dim startX As Long, maxScroll As Long, temptext As String
                         temptext = temptext & "..."
                     End If
                     If QuestSelection = i Then
-                        RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), Yellow
+                        RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), Yellow
                     Else
-                        If GlobalX >= dX And GlobalX <= dX + dw And GlobalY >= dY + 2 + (x * 14) And GlobalY <= dY + 2 + ((x + 1) * 14) Then
-                            RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), Yellow
+                        If GlobalX >= dX And GlobalX <= dX + dw And GlobalY >= dY + 2 + (X * 14) And GlobalY <= dY + 2 + ((X + 1) * 14) Then
+                            RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), Yellow
                         Else
                             If QuestInProgress(QuestIndex(i)) Then
-                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), FontColor
+                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), FontColor
                             ElseIf QuestCompleted(QuestIndex(i)) Then
-                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), BrightGreen
+                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), BrightGreen
                             Else
-                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), BrightRed
+                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), BrightRed
                             End If
                         End If
                     End If
@@ -23628,7 +23628,7 @@ End Sub
 Public Sub DrawBank()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, rec_pos As rect, rec As rect
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, rec_pos As rect, rec As rect
 Dim Amount As String
 Dim sRect As rect, dRect As rect
 Dim Sprite As Long, colour As Long
@@ -23714,8 +23714,8 @@ Dim Sprite As Long, colour As Long
                 ' If item is a stack - draw the amount you have
                 If GetBankItemValue(i) > 1 Then
                     If rec_pos.Right > 0 And rec_pos.Bottom > 0 Then
-                        y = rec_pos.Top + 22
-                        x = rec_pos.Left - 2
+                        Y = rec_pos.Top + 22
+                        X = rec_pos.Left - 2
                                             Amount = CStr(GetBankItemValue(i))
                             ' Draw currency but with k, m, b etc. using a convertion function
                         If CLng(Amount) < 1000000 Then
@@ -23725,7 +23725,7 @@ Dim Sprite As Long, colour As Long
                         ElseIf CLng(Amount) > 10000000 Then
                             colour = BrightGreen
                         End If
-                        RenderText Font_Georgia, ConvertCurrency(Amount), x, y, colour
+                        RenderText Font_Georgia, ConvertCurrency(Amount), X, Y, colour
                     End If
                 End If
             End If
@@ -23791,7 +23791,7 @@ End Sub
 Public Sub DrawShop()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT
 Dim Amount As String
 Dim rec As rect, rec_pos As rect
 Dim colour As Long
@@ -23871,8 +23871,8 @@ Dim colour As Long
                                     ' If item is a stack - draw the amount you have
                     If Shop(InShop).TradeItem(i).ItemValue > 1 Then
                         If rec_pos.Right > 0 And rec_pos.Bottom > 0 Then
-                            y = rec_pos.Top + 22
-                            x = rec_pos.Left - 4
+                            Y = rec_pos.Top + 22
+                            X = rec_pos.Left - 4
                             Amount = CStr(Shop(InShop).TradeItem(i).ItemValue)
                                                     ' Draw currency but with k, m, b etc. using a convertion function
                             If CLng(Amount) < 1000000 Then
@@ -23882,7 +23882,7 @@ Dim colour As Long
                             ElseIf CLng(Amount) > 10000000 Then
                                 colour = Green
                             End If
-                            RenderText Font_Georgia, ConvertCurrency(Amount), x, y, colour, 0
+                            RenderText Font_Georgia, ConvertCurrency(Amount), X, Y, colour, 0
                         End If
                     End If
                 End If
@@ -23950,7 +23950,7 @@ End Sub
 Sub DrawTrade()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect
 Dim colour As Long
@@ -24034,8 +24034,8 @@ Dim colour As Long
                             ' If item is a stack - draw the amount you have
                         If TradeYourOffer(i).Value > 1 Then
                             If rec_pos.Right > 0 And rec_pos.Bottom > 0 Then
-                                y = rec_pos.Top + 22
-                                x = rec_pos.Left - 4
+                                Y = rec_pos.Top + 22
+                                X = rec_pos.Left - 4
                                                             Amount = TradeYourOffer(i).Value
                                                             ' Draw currency but with k, m, b etc. using a convertion function
                                 If Amount < 1000000 Then
@@ -24045,7 +24045,7 @@ Dim colour As Long
                                 ElseIf Amount > 10000000 Then
                                     colour = BrightGreen
                                 End If
-                                RenderText Font_Georgia, ConvertCurrency(str(Amount)), x, y, colour, 0
+                                RenderText Font_Georgia, ConvertCurrency(str(Amount)), X, Y, colour, 0
                             End If
                         End If
                     End If
@@ -24113,8 +24113,8 @@ Dim colour As Long
                     ' If item is a stack - draw the amount you have
                     If TradeTheirOffer(i).Value > 1 Then
                         If rec_pos.Right > 0 And rec_pos.Bottom > 0 Then
-                            y = rec_pos.Top + 22
-                            x = rec_pos.Left - 4
+                            Y = rec_pos.Top + 22
+                            X = rec_pos.Left - 4
                                                     Amount = TradeTheirOffer(i).Value
                             ' Draw currency but with k, m, b etc. using a convertion function
                             If Amount < 1000000 Then
@@ -24124,7 +24124,7 @@ Dim colour As Long
                             ElseIf Amount > 10000000 Then
                                 colour = BrightGreen
                             End If
-                            RenderText Font_Georgia, ConvertCurrency(str(Amount)), x, y, colour, 0
+                            RenderText Font_Georgia, ConvertCurrency(str(Amount)), X, Y, colour, 0
                         End If
                     End If
                 End If
@@ -24264,7 +24264,7 @@ End Sub
 Public Sub DrawMailbox()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
 Dim startX As Long, maxScroll As Long, temptext As String
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect
@@ -24451,7 +24451,7 @@ Dim colour As Long
                         maxScroll = Int((MailCount / lineCount))
                         If InboxListScroll > maxScroll Then InboxListScroll = 1
                         For i = (lineCount * InboxListScroll) + 1 To (lineCount * InboxListScroll) + lineCount
-                            x = i - (lineCount * InboxListScroll) - 1
+                            X = i - (lineCount * InboxListScroll) - 1
                             If i > MailCount Then
                                 Exit For
                             End If
@@ -24468,10 +24468,10 @@ Dim colour As Long
                                     temptext = temptext & "..."
                                 End If
                             End If
-                            If GlobalX >= dX And GlobalX <= dX + dw And GlobalY >= dY + 2 + (x * 14) And GlobalY <= dY + 2 + ((x + 1) * 14) Then
-                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), FontColor
+                            If GlobalX >= dX And GlobalX <= dX + dw And GlobalY >= dY + 2 + (X * 14) And GlobalY <= dY + 2 + ((X + 1) * 14) Then
+                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), FontColor
                             Else
-                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (x * 14), BrightGreen
+                                RenderText Font_Georgia, temptext, dX + 4, dY + 2 + (X * 14), BrightGreen
                             End If
                         Next
                     End If
@@ -25012,7 +25012,7 @@ End Function
 Sub DrawQuestLog()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT
 Dim Amount As Long, z As Long, s As String, p As Long
 Dim rec As rect, rec_pos As rect
 Dim colour As Long, QuestText As String
@@ -25084,17 +25084,17 @@ Dim colour As Long, QuestText As String
                                                 End If
                                             Next
                                         Case TASK_FETCHRETURN
-                                            x = 0
+                                            X = 0
                                             s = ""
                                             For z = 1 To 4
                                                 If quest(QuestLogQuest).Task(i).data(z) > 0 Then
                                                     s = s & "-- Aquire " & Trim$(Item(quest(QuestLogQuest).Task(i).data(z)).Name) & "(s)  (" & str(Player(MyIndex).PlayerQuest(QuestLogQuest).TaskCount(z)) & " / " & str(quest(QuestLogQuest).Task(i).data(4 + z)) & ")" & vbNewLine
                                                     If Player(MyIndex).PlayerQuest(QuestLogQuest).TaskCount(z) < quest(QuestLogQuest).Task(i).data(4 + z) Then
-                                                        x = 1
+                                                        X = 1
                                                     End If
                                                 End If
                                             Next
-                                            If x = 0 Then
+                                            If X = 0 Then
                                                 QuestText = QuestText & "-- " & nTrim(quest(QuestLogQuest).Task(Player(MyIndex).PlayerQuest(QuestLogQuest).CurrentTask).Text(1))
                                             Else
                                                 QuestText = QuestText & s
@@ -25439,7 +25439,7 @@ End Sub
 Public Sub DrawCurrencyMenu()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
 Dim startX As Long, maxScroll As Long, temptext As String
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect
@@ -25588,7 +25588,7 @@ End Sub
 Public Sub DrawDialogueMenu()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
 Dim startX As Long, maxScroll As Long, temptext As String
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect
@@ -25787,7 +25787,7 @@ End Sub
 Public Sub DrawEventChat()
 Dim dX As Long, dY As Long, dw As Long, dH As Long, sx As Long, sy As Long, sW As Long, sH As Long
 Dim tOffsetX As Long, tOffsetY As Long
-Dim i As Long, x As Long, y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
+Dim i As Long, X As Long, Y As Long, ItemNum As Long, itemPic As Long, srcRect As D3DRECT, destRect As D3DRECT, lineCount As Long
 Dim startX As Long, maxScroll As Long, temptext As String
 Dim Amount As Long
 Dim rec As rect, rec_pos As rect
@@ -25999,7 +25999,7 @@ errorhandler:
 End Sub
 
 Sub NewCharChange(Part As Long, dir As Long)
-    Dim i As Long, x As Long, clsNum As Long, cnt As Long, curlist() As Integer, curItem As Long
+    Dim i As Long, X As Long, clsNum As Long, cnt As Long, curlist() As Integer, curItem As Long
     'Part List (Refer to form)
     '1 = Up, 2 = down
 

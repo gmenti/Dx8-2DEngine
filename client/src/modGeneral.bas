@@ -54,7 +54,7 @@ Dim reconnectCount As Long, curVersion As Long, myVersion As Long, i As Long
             If GotServerInfo Then Exit Do
         Else
             reconnectCount = reconnectCount + 1
-            If reconnectCount >= 5 Then
+            If reconnectCount > 5 Then
                 MsgBox "Não foi possível conectar ao servidor, tente novamente mais tarde."
                 frmLoad.Visible = False
                 Exit Sub

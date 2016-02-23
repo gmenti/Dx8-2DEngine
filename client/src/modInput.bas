@@ -2531,6 +2531,9 @@ Sub Chatbox_MouseDown(X As Long, Y As Long)
             Exit Sub
         End If
     End If
+    
+    If Not chatOn Then Exit Sub
+    
     'ChatUp Button
     If X >= ChatUpBtnBounds.Left And X <= ChatUpBtnBounds.Left + ChatUpBtnBounds.Right Then
         If Y >= ChatUpBtnBounds.Top And Y <= ChatUpBtnBounds.Top + ChatUpBtnBounds.Bottom Then
@@ -2538,6 +2541,7 @@ Sub Chatbox_MouseDown(X As Long, Y As Long)
             Exit Sub
         End If
     End If
+    
     'ChatDown Button
     If X >= ChatDownBtnBounds.Left And X <= ChatDownBtnBounds.Left + ChatDownBtnBounds.Right Then
         If Y >= ChatDownBtnBounds.Top And Y <= ChatDownBtnBounds.Top + ChatDownBtnBounds.Bottom Then
@@ -2555,6 +2559,8 @@ errorhandler:
 End Sub
 
 Sub Chatbox_MouseUp(X As Long, Y As Long)
+
+    If Not chatOn Then Exit Sub
     'ChatUpBtn
 
    On Error GoTo errorhandler
