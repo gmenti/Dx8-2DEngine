@@ -31,13 +31,16 @@ Dim reconnectCount As Long, curVersion As Long, myVersion As Long, i As Long
     If ServerIndex = 0 Then
         Call SetStatus("Carregando opções...")
         LoadOptions
-        
+
         If Options.DefaultServer > 0 Then
             If ServerCount > 0 And ServerCount >= Options.DefaultServer Then
                 ServerIndex = Options.DefaultServer
             End If
         End If
     End If
+    
+    Call carregarCamposLogin
+    Call limparCamposCadastrar
      
     Call SetStatus("Carregando configurações...")
     Call TcpInit
@@ -55,7 +58,7 @@ Dim reconnectCount As Long, curVersion As Long, myVersion As Long, i As Long
         Else
             reconnectCount = reconnectCount + 1
             If reconnectCount > 5 Then
-                MsgBox "Não foi possível conectar ao servidor, tente novamente mais tarde."
+                MsgBox "Não foi possível conectar ao servidor, tente novamente mais tarde.", vbRetryCancel, "Ringex Online"
                 frmLoad.Visible = False
                 Exit Sub
             Else

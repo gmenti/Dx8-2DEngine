@@ -162,7 +162,11 @@ errorhandler:
 End Sub
 
 Private Sub Form_Load()
-    SelTextbox = 1
+    If Len(txtLUsuario) = 0 Then
+        SelTextbox = 1
+    Else
+        SelTextbox = 2
+    End If
 End Sub
 
 Private Sub Form_Resize()

@@ -139,13 +139,15 @@ Dim filename As String, i As Long
             Call PutVar(filename, "Server" & CStr(i), "Game_Name", Trim$(Servers(i).Game_Name))
             Call PutVar(filename, "Server" & CStr(i), "IP", Trim$(Servers(i).ip))
             Call PutVar(filename, "Server" & CStr(i), "Port", str(Servers(i).port))
-            Call PutVar(filename, "Server" & CStr(i), "Username", Trim$(Servers(i).Username))
-            Call PutVar(filename, "Server" & CStr(i), "SavePass", str(1))
+            Call PutVar(filename, "Server" & CStr(i), "Password", "")
+            Call PutVar(filename, "Server" & CStr(i), "SavePass", str(Servers(i).SavePass))
+            
             If Servers(i).SavePass = 1 Then
-                Call PutVar(filename, "Server" & CStr(i), "Password", Trim$(Servers(i).Password))
+                Call PutVar(filename, "Server" & CStr(i), "Username", txtLUsuario)
             Else
-                Call PutVar(filename, "Server" & CStr(i), "Password", "")
+                Call PutVar(filename, "Server" & CStr(i), "Username", "")
             End If
+            
         Next
     End If
 
@@ -190,6 +192,7 @@ Dim filename As String, i As Long
         Options.HideServerList = 1 'Val(GetVar(filename, "Options", "HideServerList"))
         ServerCount = Val(GetVar(filename, "Servers", "ServerCount"))
         ReDim Servers(ServerCount)
+        
         If ServerCount > 0 Then
             For i = 1 To ServerCount
                 Servers(i).Game_Name = Trim$(GetVar(filename, "Server" & CStr(i), "Game_Name"))
@@ -200,6 +203,7 @@ Dim filename As String, i As Long
                 Servers(i).Password = Trim$(GetVar(filename, "Server" & CStr(i), "Password"))
             Next
         End If
+        
     End If
     
     If Options.Debug = 1 Then DebugMode = True Else DebugMode = False

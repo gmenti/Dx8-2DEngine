@@ -298,17 +298,17 @@ Dim aux As Long
         Call SetWindowLong(frmMain.hwnd, GWL_STYLE, GetWindowLong(frmMain.hwnd, GWL_STYLE) Xor WS_CAPTION Xor WS_BORDER)
         Call SetWindowPos(frmMain.hwnd, 0, 0, 0, 0, 0, SWP_FRAMECHANGED Or SWP_NOMOVE Or SWP_NOSIZE Or SWP_SHOWWINDOW)
     End If
+    
     'Clear Menu Variables
     MenuStage = 1
     MENU_ERRO_MSG = vbNullString
-    Call carregarCamposLogin
-    Call limparCamposCadastrar
+    
     SelectedChar = 1
     UpdateDebugCaption
     ' check if we have main-menu music
     If Len(Trim$(Options.MenuMusic)) > 0 Then PlayMusic Trim$(Options.MenuMusic)
     'End Menu Init
-
+    
     ' *** Start GameLoop ***
     Do While Not InGame And ServerIndex > 0
         tick = GetTickCount                            ' Set the inital tick

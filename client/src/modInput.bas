@@ -1410,6 +1410,7 @@ Dim isHandled As Boolean
             isHandled = True
         End If
     End If
+    
     'Check Textbox 2
     If isHandled = False Then
         If X >= LPasswordBounds.Left And X <= LPasswordBounds.Left + LPasswordBounds.Right Then
@@ -1419,6 +1420,7 @@ Dim isHandled As Boolean
             End If
         End If
     End If
+    
     'Login Button
     If isHandled = False Then
         If X >= LoginButtonBounds.Left And X <= LoginButtonBounds.Left + LoginButtonBounds.Right Then
@@ -1427,6 +1429,7 @@ Dim isHandled As Boolean
             End If
         End If
     End If
+    
     'Login Button
     If isHandled = False Then
         If X >= SaveInfoCheckBounds.Left And X <= SaveInfoCheckBounds.Left + SaveInfoCheckBounds.Right Then
