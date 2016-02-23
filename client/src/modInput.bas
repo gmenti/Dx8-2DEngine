@@ -2345,7 +2345,7 @@ End Sub
 
 Public Sub AbrirSite()
     Dim r As Long
-    r = ShellExecute(0, "open", GAME_WEBSITE, 0, 0, 1)
+    r = ShellExecute(0, "open", GAME_WEBSITE, "", "", 0)
 End Sub
 
 Public Sub HandleMenuKeypress(KeyAscii As Integer)

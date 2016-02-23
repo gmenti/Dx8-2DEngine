@@ -145,7 +145,7 @@ Public Const MAX_RANDOMDUNGEON_GRAPHICS As Long = 4
 Public Const MAX_PROJECTILES As Long = 255
 
 ' Website
-Public Const GAME_WEBSITE As String = "www.ringexonline.com"
+Public Const GAME_WEBSITE As String = "https://github.com/GMenti/Dx8-2DEngine/commits/master"
 
 ' text color constants
 Public Const Black As Byte = 0
