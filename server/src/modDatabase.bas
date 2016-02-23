@@ -3001,7 +3001,7 @@ Sub LoadAccount(Index As Long, Name As String)
     
         Query = "SELECT * FROM account WHERE login='" & Trim(Name) & "'"
         .login = resultadoSql("login")
-        .pass = Len(Trim$(resultadoSql("login")))
+        .pass = Len(Trim$(resultadoSql("password")))
         .ip = resultadoSql("ip")
         
         For i = 1 To MAX_PLAYER_CHARS
@@ -3013,6 +3013,7 @@ Sub LoadAccount(Index As Long, Name As String)
             Close #F
             
             .characters(i) = Trim$(MonkeyPlayer.characters(i).Name)
+            
             If MonkeyPlayer.characters(i).access > .access Then
                 .access = MonkeyPlayer.characters(i).access
             End If
