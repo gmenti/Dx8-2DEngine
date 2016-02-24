@@ -122,6 +122,11 @@ errorhandler:
     Err.Clear
 End Sub
 
+Private Sub Form_Unload(Cancel As Integer)
+    Cancel = True
+    Call DestroyServer
+End Sub
+
 Private Sub tmrNotifications_Timer()
     Static LastNotification As String
     Static TimeShown As Long

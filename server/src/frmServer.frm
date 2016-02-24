@@ -23,6 +23,14 @@ Begin VB.Form frmServer
    ScaleHeight     =   8205
    ScaleWidth      =   13305
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton cmdDeslogar 
+      Caption         =   "Deslogar"
+      Height          =   1155
+      Left            =   600
+      TabIndex        =   71
+      Top             =   4920
+      Width           =   1515
+   End
    Begin VB.CommandButton Command2 
       Caption         =   "Command2"
       Height          =   255
@@ -1003,6 +1011,13 @@ errorhandler:
 End Sub
 
 
+Private Sub cmdDeslogar_Click()
+    frmServer.Hide
+    
+    frmLogin.WindowState = vbNormal
+    frmLogin.Show
+End Sub
+
 Private Sub cmdLoadOptions_Click()
     LoadOptions
     Call TextAdd("All options reloaded.")
@@ -1631,7 +1646,7 @@ End Sub
 Private Sub Form_Load()
 
    On Error GoTo errorhandler
-
+   
     lblNotifications.Caption = ""
     lblNotifications.ForeColor = &HFF&
 
@@ -1948,8 +1963,8 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y A
 
     Select Case lmsg
         Case WM_LBUTTONDBLCLK
-            frmServer.WindowState = vbNormal
-            frmServer.Show
+            frmLogin.WindowState = vbNormal
+            frmLogin.Show
             txtText.SelStart = Len(txtText.Text)
     End Select
     

@@ -170,7 +170,6 @@ Public Sub InitServer()
     End If
     
     frmLoad.Visible = False
-    frmServer.Show
 
     ' Start listening
     frmServer.Socket(0).Listen
@@ -181,12 +180,10 @@ Public Sub InitServer()
     ' reset shutdown value
     isShuttingDown = False
     
+    frmLogin.Show
+    
     ' Starts the server loop
     ServerLoop
-    
-       
-    
-
 
    On Error GoTo 0
    Exit Sub
@@ -214,7 +211,7 @@ Public Sub DestroyServer()
     
     Unload frmLoad
     Unload frmServer
-    
+    Unload frmLogin
     End
 
 

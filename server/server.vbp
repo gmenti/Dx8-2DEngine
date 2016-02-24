@@ -28,6 +28,7 @@ Module=modPets; src\modPets.bas
 Form=src\frmEditPlayer.frm
 Module=modValidation; src\modValidation.bas
 Module=modMySQL; src\Module1.bas
+Form=src\frmLogin.frm
 IconForm="frmServer"
 Startup="Sub Main"
 HelpFile=""
