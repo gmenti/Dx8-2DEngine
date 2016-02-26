@@ -3185,7 +3185,7 @@ Public Sub StunPlayer(ByVal Index As Long, ByVal Spellnum As Long)
         ' send it to the index
         SendStunned Index
         ' tell him he's stunned
-        PlayerMsg Index, "You have been stunned.", BrightRed
+        PlayerMsg Index, "Você está paralisado por " & Spell(Spellnum).StunDuration & " segundos.", BrightRed
     End If
 
 

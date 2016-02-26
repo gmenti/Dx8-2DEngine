@@ -1854,7 +1854,7 @@ Private Sub mnuKickPlayer_Click()
     Name = frmServer.lvwInfo.SelectedItem.SubItems(3)
 
     If Not Name = "Not Playing" Then
-        Call AlertMsg(FindPlayer(Name), "You have been kicked by the server owner!")
+        Call AlertMsg(FindPlayer(Name), "Você foi expuldo do jogo!")
     End If
 
 
@@ -1920,7 +1920,7 @@ Sub mnuAdminPlayer_click()
     If Not Name = "Not Playing" Then
         Call SetPlayerAccess(FindPlayer(Name), 4)
         Call SendPlayerData(FindPlayer(Name))
-        Call PlayerMsg(FindPlayer(Name), "You have been granted administrator access.", BrightCyan)
+        Call PlayerMsg(FindPlayer(Name), "Você agora é um membro da staff!", BrightCyan)
     End If
 
 

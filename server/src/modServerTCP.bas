@@ -523,12 +523,14 @@ Dim i As Long
    On Error GoTo errorhandler
 
     If Index <> 0 Then
+    
         ' make sure they're not banned
         If Not IsBanned(GetPlayerIP(Index)) Then
-            Call TextAdd("Received connection from " & GetPlayerIP(Index) & ".")
+            Call TextAdd("Conexão recebida: " & GetPlayerIP(Index))
         Else
-            Call AlertMsg(Index, "You have been banned from " & Options.Game_Name & ", and can no longer play.")
+            Call AlertMsg(Index, "Você foi banido do jogo!")
         End If
+        
         ' re-set the high index
         Player_HighIndex = 0
         For i = MAX_PLAYERS To 1 Step -1
@@ -537,6 +539,7 @@ Dim i As Long
                 Exit For
             End If
         Next
+        
         ' send the new highindex to all logged in players
         SendHighIndex
         

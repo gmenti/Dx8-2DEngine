@@ -1677,15 +1677,15 @@ Sub HandleKickPlayer(ByVal Index As Long, ByRef data() As Byte, ByVal StartAddr 
     If n <> Index Then
         If n > 0 Then
             If GetPlayerAccess(n) < GetPlayerAccess(Index) Then
-                Call GlobalMsg(GetPlayerName(n) & " has been kicked from " & Options.Game_Name & " by " & GetPlayerName(Index) & "!", White)
+                Call GlobalMsg(GetPlayerName(n) & " foi expulso por " & GetPlayerName(Index) & "!", White)
                 Call AddLog(GetPlayerName(Index) & " has kicked " & GetPlayerName(n) & ".", ADMIN_LOG)
-                Call AlertMsg(n, "You have been kicked by " & GetPlayerName(Index) & "!")
+                Call AlertMsg(n, "Você foi expulso do jogo!")
             Else
-                Call PlayerMsg(Index, "That is a higher or same access admin then you!", White)
+                Call PlayerMsg(Index, "Você não tem acesso necessário!", White)
             End If
 
         Else
-            Call PlayerMsg(Index, "Player is not online.", White)
+            Call PlayerMsg(Index, "Jogador offline.", White)
         End If
 
     Else

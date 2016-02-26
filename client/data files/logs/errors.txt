@@ -34382,3 +34382,7 @@ The following error occured at 'Main' in 'modGeneral'.
 Run-time error '339': Component 'MSINET.OCX' or one of its dependencies not correctly registered: a file is missing or invalid.
 The error occured on line 0
 
+The following error occured at 'AddCommand' in 'modGameEditors'.
+Run-time error '7': Out of memory.
+The error occured on line 0
+

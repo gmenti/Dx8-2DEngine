@@ -267,8 +267,9 @@ Function Ban(ByVal Index As Long, ByVal accname As String, ByVal online As Boole
     
     Call GlobalMsg("Account " & accname & " has been banned from " & Options.Game_Name & "!", White)
     Call AddLog("Account " & accname & " has been banned!", ADMIN_LOG)
+    
     If online Then
-        Call AlertMsg(Index, "You have been banned!")
+        Call AlertMsg(Index, "Você foi banido!")
     End If
     
     For i = 1 To MAX_PLAYERS
